@@ -1,12 +1,8 @@
 import React, { useState } from "react";
 import Pokemon from "@/model/pokemon";
-import { useNavigate } from 'react-router-dom';
 import "./PokeCard.css";
-import { Row, Col, Container, Image, ProgressBar, Card, ListGroup, Badge } from 'react-bootstrap';
-
-interface Sprites {
-  [key: string]: string | null;
-}
+import { Link } from 'react-router-dom';
+import { Row, Col, Container } from 'react-bootstrap';
 
 interface PokeCardProps {
   id: number;
@@ -17,25 +13,10 @@ interface PokeCardProps {
   defense: number;
 }
 
-const PokeCard: React.FC<PokeCardProps> = ({
-  id,
-  pokemon,
-  speed,
-  health,
-  attack,
-  defense,
-}) => {
-  const navigate = useNavigate();
+const PokeCard: React.FC<PokeCardProps> = ({ id, pokemon, speed, health, attack, defense }) => {
+    const prevPokemonId = (id - 1) % 152;
 
-  const goToPrevPokemon = () => {
-    const prevPokemonId = id - 1;
-    navigate(`/pokemon/${prevPokemonId}`);
-  };
-
-  const goToNextPokemon = () => {
     const nextPokemonId = (id + 1) % 152;
-    navigate(`/pokemon/${nextPokemonId}`);
-  };
 
   return (
     <Container className="PokeCard">
@@ -48,9 +29,11 @@ const PokeCard: React.FC<PokeCardProps> = ({
         </Row>
         <Row className="PokeCard-Center">
             <Col md="auto">
-            <button className="PokeCard-Inner-Btn" onClick={goToPrevPokemon}>
-                ←
-            </button>
+                <Link to={`/pokemon/${prevPokemonId}`}>
+                    <button className="PokeCard-Inner-Btn" >
+                        ←
+                    </button>
+                </Link>
             </Col>
             <Col md="auto">
             <div className="PokeCard-Image">
@@ -63,9 +46,11 @@ const PokeCard: React.FC<PokeCardProps> = ({
             </div>
             </Col>
             <Col md="auto">
-            <button className="PokeCard-Inner-Btn" onClick={goToNextPokemon}>
-                →
-            </button>
+                <Link to={`/pokemon/${nextPokemonId}`}>
+                    <button className="PokeCard-Inner-Btn">
+                        →
+                    </button>
+                </Link>
             </Col>
         </Row>
         <Row>
