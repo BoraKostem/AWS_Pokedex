@@ -1,5 +1,5 @@
 import Pokemon from "@/model/pokemon";
-import { Row, Col, Container, Image, ProgressBar, Card, ListGroup, Badge } from 'react-bootstrap';
+import { Row, Col, Container, Image, ProgressBar, Card, ListGroup, Badge, Button } from 'react-bootstrap';
 import PolarChartComponent from '@/components/PolarChart';
 import { Link } from 'react-router-dom';
 import '@/app/PokeCard.css';
@@ -33,6 +33,7 @@ export default function PokemonComponent(props: Props) {
             </Row>
             <Row>
                 <Col>
+                    <Container className="PokeCard">
                         <Row className="justify-content-md-center">
                             <Col md="auto">
                             <h1 className="PokeCard-Title">
@@ -43,14 +44,14 @@ export default function PokemonComponent(props: Props) {
                         <Row className="PokeCard-Center">
                             <Col md="auto">
                                 <Link to={`/pokemon/${prevPokemonId}`}>
-                                    <button className="PokeCard-Inner-Btn" >
+                                    <Button className="PokeCard-Inner-Btn" >
                                         ←
-                                    </button>
+                                    </Button>
                                 </Link>
                             </Col>
                             <Col md="auto">
                             <div className="PokeCard-Image">
-                                <img
+                                <Image
                                 className="PokeCard-Image-Inner"
                                 width="100px"
                                 height="100px"
@@ -60,12 +61,13 @@ export default function PokemonComponent(props: Props) {
                             </Col>
                             <Col md="auto">
                                 <Link to={`/pokemon/${nextPokemonId}`}>
-                                    <button className="PokeCard-Inner-Btn">
+                                    <Button className="PokeCard-Inner-Btn">
                                         →
-                                    </button>
+                                    </Button>
                                 </Link>
                             </Col>
                         </Row>
+                    </Container>
                 </Col>
                 <Col>
                     <Row className="m-2">
