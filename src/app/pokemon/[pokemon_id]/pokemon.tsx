@@ -33,7 +33,6 @@ export default function PokemonComponent(props: Props) {
             </Row>
             <Row>
                 <Col>
-                    <Container className="PokeCard">
                         <Row className="justify-content-md-center">
                             <Col md="auto">
                             <h1 className="PokeCard-Title">
@@ -67,12 +66,6 @@ export default function PokemonComponent(props: Props) {
                                 </Link>
                             </Col>
                         </Row>
-                        <Row>
-                            <Col>
-                            <p>Speed: {pokemon.speed} Health: {pokemon.healthPoints} Attack: {pokemon.attack} Defense: {pokemon.defense}</p>
-                            </Col>
-                        </Row>
-                    </Container>
                 </Col>
                 <Col>
                     <Row className="m-2">
