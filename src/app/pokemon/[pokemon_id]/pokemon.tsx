@@ -26,7 +26,10 @@ export default function PokemonComponent(props: Props) {
     if (prevPokemonId <= 0) {
         prevPokemonId = 151;
     }
-    const nextPokemonId = (pokemon.pokemonNumber + 1) % 152;
+    var nextPokemonId = (pokemon.pokemonNumber + 1) % 152;
+    if (nextPokemonId <= 0) {
+        nextPokemonId = 1;
+    }
 
     return (
         <Container>
