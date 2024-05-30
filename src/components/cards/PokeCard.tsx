@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Pokemon from "@/model/pokemon";
 import { useNavigate } from 'react-router-dom';
 import "./PokeCard.css";
+import { Row, Col, Container, Image, ProgressBar, Card, ListGroup, Badge } from 'react-bootstrap';
 
 interface Sprites {
   [key: string]: string | null;
@@ -37,30 +38,42 @@ const PokeCard: React.FC<PokeCardProps> = ({
   };
 
   return (
-    <div className="PokeCard">
-      <h1 className="PokeCard-Title">
-        ID: {id} - {pokemon.pokemonName}
-      </h1>
-      <div className="PokeCard-Center">
-        <button className="PokeCard-Inner-Btn" onClick={goToPrevPokemon}>
-          ←
-        </button>
-        <div className="PokeCard-Image">
-          <img
-            className="PokeCard-Image-Inner"
-            width="100px"
-            height="100px"
-            src={pokemon.mainImage}
-          />
-        </div>
-        <button className="PokeCard-Inner-Btn" onClick={goToNextPokemon}>
-          →
-        </button>
-      </div>
-      <div>
-        <p>Speed: {speed} Health: {health} Attack: {attack} Defense: {defense}</p>
-      </div>
-    </div>
+    <Container className="PokeCard">
+        <Row className="justify-content-md-center">
+            <Col md="auto">
+            <h1 className="PokeCard-Title">
+                ID: {id} - {pokemon.pokemonName}
+            </h1>
+            </Col>
+        </Row>
+        <Row className="PokeCard-Center">
+            <Col md="auto">
+            <button className="PokeCard-Inner-Btn" onClick={goToPrevPokemon}>
+                ←
+            </button>
+            </Col>
+            <Col md="auto">
+            <div className="PokeCard-Image">
+                <img
+                className="PokeCard-Image-Inner"
+                width="100px"
+                height="100px"
+                src={pokemon.mainImage}
+                />
+            </div>
+            </Col>
+            <Col md="auto">
+            <button className="PokeCard-Inner-Btn" onClick={goToNextPokemon}>
+                →
+            </button>
+            </Col>
+        </Row>
+        <Row>
+            <Col>
+            <p>Speed: {speed} Health: {health} Attack: {attack} Defense: {defense}</p>
+            </Col>
+        </Row>
+    </Container>
   );
 };
 
