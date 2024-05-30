@@ -1,7 +1,8 @@
 import Pokemon from "@/model/pokemon";
 import { Row, Col, Container, Image, ProgressBar, Card, ListGroup, Badge } from 'react-bootstrap';
 import PolarChartComponent from '@/components/PolarChart';
-import PokeCard from '@/components/cards/PokeCard';
+import { Link } from 'react-router-dom';
+import '@/app/PokeCard.css';
 type Props = {
     pokemon: Pokemon;
 }
@@ -21,6 +22,9 @@ export default function PokemonComponent(props: Props) {
         }
         return <></>
       }
+    const prevPokemonId = (pokemon.pokemonNumber - 1) % 152;
+
+    const nextPokemonId = (pokemon.pokemonNumber + 1) % 152;
 
     return (
         <Container>
@@ -29,25 +33,57 @@ export default function PokemonComponent(props: Props) {
             </Row>
             <Row>
                 <Col>
-                    <PokeCard
-                    id={pokemon.pokemonNumber}
-                    pokemon={pokemon}
-                    speed={pokemon.speed}
-                    health={pokemon.healthPoints}
-                    attack={pokemon.attack}
-                    defense={pokemon.defense}
-                    />
+                    <Container className="PokeCard">
+                        <Row className="justify-content-md-center">
+                            <Col md="auto">
+                            <h1 className="PokeCard-Title">
+                                ID: {pokemon.pokemonNumber} - {pokemon.pokemonName}
+                            </h1>
+                            </Col>
+                        </Row>
+                        <Row className="PokeCard-Center">
+                            <Col md="auto">
+                                <Link to={`/pokemon/${prevPokemonId}`}>
+                                    <button className="PokeCard-Inner-Btn" >
+                                        ←
+                                    </button>
+                                </Link>
+                            </Col>
+                            <Col md="auto">
+                            <div className="PokeCard-Image">
+                                <img
+                                className="PokeCard-Image-Inner"
+                                width="100px"
+                                height="100px"
+                                src={pokemon.mainImage}
+                                />
+                            </div>
+                            </Col>
+                            <Col md="auto">
+                                <Link to={`/pokemon/${nextPokemonId}`}>
+                                    <button className="PokeCard-Inner-Btn">
+                                        →
+                                    </button>
+                                </Link>
+                            </Col>
+                        </Row>
+                        <Row>
+                            <Col>
+                            <p>Speed: {pokemon.speed} Health: {pokemon.healthPoints} Attack: {pokemon.attack} Defense: {pokemon.defense}</p>
+                            </Col>
+                        </Row>
+                    </Container>
                 </Col>
                 <Col>
                     <Row className="m-2">
-                    <Col>
-                        <PolarChartComponent
-                        speed={pokemon.speed}
-                        health={pokemon.healthPoints}
-                        attack={pokemon.attack}
-                        defense={pokemon.defense}
-                        />
-                    </Col>
+                        <Col>
+                            <PolarChartComponent
+                            speed={pokemon.speed}
+                            health={pokemon.healthPoints}
+                            attack={pokemon.attack}
+                            defense={pokemon.defense}
+                            />
+                        </Col>
                     </Row>
                     <Row className="m-2">
                         <Card className="p-0">
