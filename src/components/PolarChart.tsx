@@ -2,6 +2,8 @@
 import React from 'react';
 import { PolarArea } from 'react-chartjs-2';
 import { ChartData, ChartOptions } from 'chart.js';
+import { Chart, registerables } from 'chart.js';
+Chart.register(...registerables);
 
 interface Props {
   speed: number;
