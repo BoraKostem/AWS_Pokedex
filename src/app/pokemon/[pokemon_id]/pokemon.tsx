@@ -55,7 +55,7 @@ export default function PokemonComponent(props: Props) {
                             </div>
                             </Col>
                         </Row>
-                        <Row>
+                        <Row className="PokeCard-Center">
                             <Col md="auto">
                                 <Link href={`/pokemon/${prevPokemonId}`}>
                                     <Button className="PokeCard-Inner-Btn" >
