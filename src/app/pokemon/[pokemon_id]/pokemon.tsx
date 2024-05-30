@@ -1,6 +1,7 @@
 import Pokemon from "@/model/pokemon";
 import { Row, Col, Container, Image, ProgressBar, Card, ListGroup, Badge } from 'react-bootstrap';
 import PolarChartComponent from '@/components/PolarChart';
+import PokeCard from '@/components/cards/PokeCard';
 type Props = {
     pokemon: Pokemon;
 }
@@ -28,7 +29,15 @@ export default function PokemonComponent(props: Props) {
             </Row>
             <Row>
                 <Col>
-                    <Image src={pokemon.mainImage} thumbnail /></Col>
+                    <PokeCard
+                    id={pokemon.pokemonNumber}
+                    pokemon={pokemon}
+                    speed={pokemon.speed}
+                    health={pokemon.healthPoints}
+                    attack={pokemon.attack}
+                    defense={pokemon.defense}
+                    />
+                </Col>
                 <Col>
                     <Row className="m-2">
                     <Col>
