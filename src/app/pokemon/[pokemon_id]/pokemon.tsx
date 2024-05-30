@@ -1,7 +1,7 @@
 import Pokemon from "@/model/pokemon";
 import { Row, Col, Container, Image, ProgressBar, Card, ListGroup, Badge, Button } from 'react-bootstrap';
 import PolarChartComponent from '@/components/PolarChart';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import '@/app/PokeCard.css';
 type Props = {
     pokemon: Pokemon;
@@ -43,7 +43,7 @@ export default function PokemonComponent(props: Props) {
                         </Row>
                         <Row className="PokeCard-Center">
                             <Col md="auto">
-                                <Link to={`/pokemon/${prevPokemonId}`}>
+                                <Link href={`/pokemon/${prevPokemonId}`}>
                                     <Button className="PokeCard-Inner-Btn" >
                                         ←
                                     </Button>
@@ -60,7 +60,7 @@ export default function PokemonComponent(props: Props) {
                             </div>
                             </Col>
                             <Col md="auto">
-                                <Link to={`/pokemon/${nextPokemonId}`}>
+                                <Link href={`/pokemon/${nextPokemonId}`}>
                                     <Button className="PokeCard-Inner-Btn">
                                         →
                                     </Button>
