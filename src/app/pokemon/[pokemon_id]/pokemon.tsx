@@ -22,8 +22,10 @@ export default function PokemonComponent(props: Props) {
         }
         return <></>
       }
-    const prevPokemonId = (pokemon.pokemonNumber - 1) % 152;
-
+    var prevPokemonId = (pokemon.pokemonNumber - 1) % 152;
+    if (prevPokemonId <= 0) {
+        prevPokemonId = 151;
+    }
     const nextPokemonId = (pokemon.pokemonNumber + 1) % 152;
 
     return (
@@ -43,13 +45,6 @@ export default function PokemonComponent(props: Props) {
                         </Row>
                         <Row className="PokeCard-Center">
                             <Col md="auto">
-                                <Link href={`/pokemon/${prevPokemonId}`}>
-                                    <Button className="PokeCard-Inner-Btn" >
-                                        ←
-                                    </Button>
-                                </Link>
-                            </Col>
-                            <Col md="auto">
                             <div className="PokeCard-Image">
                                 <Image
                                 className="PokeCard-Image-Inner"
@@ -58,6 +53,15 @@ export default function PokemonComponent(props: Props) {
                                 src={pokemon.mainImage}
                                 />
                             </div>
+                            </Col>
+                        </Row>
+                        <Row>
+                            <Col md="auto">
+                                <Link href={`/pokemon/${prevPokemonId}`}>
+                                    <Button className="PokeCard-Inner-Btn" >
+                                        ←
+                                    </Button>
+                                </Link>
                             </Col>
                             <Col md="auto">
                                 <Link href={`/pokemon/${nextPokemonId}`}>
